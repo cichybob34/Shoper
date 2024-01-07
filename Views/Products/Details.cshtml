@@ -1,0 +1,42 @@
+﻿@model Shoper.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nazwa
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Ilość
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity) szt.
+        </dd>
+        <dt class = "col-sm-2">
+            Cena
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price) zł
+        </dd>
+        <dt class = "col-sm-2">
+            Kupiono
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IsPurchased)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-secondary btn-sm" asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a><br /><br />
+    <a class="btn btn-secondary btn-sm" asp-action="Index">Wróć do listy</a>
+</div>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Strona Główna";
+}
+
+<br /><center>
+    <div class="col-md-6" class="jumbotron">
+    <h1 class="shoperhome">Witaj w Shoper!</h1>
+    <p>Nasza aplikacja to Twój osobisty asystent zakupowy, który zapewnia pełną kontrolę nad procesem robienia zakupów. Dzięki niej możesz skupić się na tym, co naprawdę ważne - wyborze produktów i oszczędzaniu czasu.</p>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-secondary btn-lg" href="/Identity/Account/Register" role="button">Zarejestruj się</a>
+            <a class="btn btn-secondary btn-lg" href="/Identity/Account/Login" role="button">Zaloguj się</a>
+        }
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <h2>@ViewData["error"]</h2>
+            <form method="get" action="/Home/Search">
+                <input class="form-control" type="text" name="searchTerm" placeholder="Wyszukaj produkty i listy..." /><br>
+                <button class="btn btn-secondary" type="submit">Wyszukaj</button>
+            </form>
+           
+        }
+        else
+        {
+            <p>Aby korzystać z wyszukiwania, należy się <a href="/Identity/Account/Login">zalogować</a>.</p>
+        }
+    </div>
+</center><br /><br />
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Twórz listy</h2>
+        <p>Po zalogowaniu do aplikacji zyskujesz możliwość tworzenia nowych list zakupów. Niezależnie od tego, czy to codzienne zakupy spożywcze czy też większe zakupy na specjalne okazje, nasza aplikacja pomoże Ci stworzyć i zarządzać listami w prosty i intuicyjny sposób. Dodawaj produkty wraz z ilością i ceną, aby dokładnie kontrolować swoje wydatki.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Szukaj produktów</h2>
+        <p>Skorzystaj z wyszukiwarki na stronie domowej aby odnaleźć listę zakupów lub produkt bez konieczności przeglądania wszystkich danych w aplikacji.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Statystyki</h2>
+        <p>Sprawdź w zakładce statystyki ile osób już korzysta z aplikaji Shoper oraz ile list utworzyli.</p>
+    </div>
+</div>
